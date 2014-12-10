@@ -1,0 +1,24 @@
+<template name="contestPhotos">
+  {{> dropdown}}
+
+  <h1 class="title feat-name">
+    {{featName}}
+  </h1>
+
+  <div class="eventPhotos">
+    {{#each photos}}
+        {{> contestPhoto}}
+    {{/each}}
+  </div>
+
+  <div class="footer">
+    <button class="navigate-photos">Photos</button>
+    <button class="navigate-events">Events</button>
+  </div>
+</template>
+
+<template name="contestPhoto">
+  <div class="featPhoto">
+      {{> snapshots}}
+  </div>
+</template>
