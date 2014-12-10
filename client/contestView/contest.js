@@ -22,10 +22,6 @@ Template.contestPhotos.events({
     Router.go('/game');
   },
 
-  'click .go-back': function(evt, template) {
-    Router.go('/contestPhotos');
-  },
-
   'click .logout': function(evt, template) {
     console.log('Logging user out...');
     Meteor.logout(function(err) {
@@ -33,16 +29,4 @@ Template.contestPhotos.events({
     });
   }
 });
-
-var hasUpVoted = function(voterId, photoId) {
-  var query = {'_id':photoId, 'upVotes': { $in: [ voterId ] } };
-  var voteCheck = Images.findOne(query);
-  return (voteCheck !== undefined);
-};
-
-var hasDownVoted = function(voterId, photoId) {
-  var query = {'_id':photoId, 'downVotes': { $in: [ voterId ] } };
-  var voteCheck = Images.findOne(query);
-  return (voteCheck !== undefined);
-};
 
