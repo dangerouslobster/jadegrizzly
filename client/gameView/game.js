@@ -59,27 +59,30 @@ Template.gameEvent.events({
     var glyphIcon = template.glyphIcon.get();
 
     MeteorCamera.getPicture(cameraOptions, function (error, data) {
-      if(error) { console.log(error); }
-      // INSERT URL TO DB
-      Session.set('eventImage', data);
-      var gameId = Session.get('currentGameId');
-      var userId = Meteor.userId();
+      if(error) {
+        console.log(error);
+      } else {
+        // INSERT URL TO DB
+        Session.set('eventImage', data);
+        var gameId = Session.get('currentGameId');
+        var userId = Meteor.userId();
 
-      // TODO Check if the user already has a photo for this featName, gameId and playerId
-      // The unique key is featName, gameId + playerId
+        // TODO Check if the user already has a photo for this featName, gameId and playerId
+        // The unique key is featName, gameId + playerId
 
-      Images.insert({
-                      userId: userId,
-                      username: Meteor.user().username,
-                      gameId: gameId,
-                      featName: featName,
-                      "photoURL":data, // I don't know why photoURL is in quotes. I don't even know why it's called photoURL
-                      voteCount: 0,
-                      downVotes: [],
-                      upVotes: []
-                    });
+        Images.insert({
+                        userId: userId,
+                        username: Meteor.user().username,
+                        gameId: gameId,
+                        featName: featName,
+                        "photoURL":data, // I don't know why photoURL is in quotes. I don't even know why it's called photoURL
+                        voteCount: 0,
+                        downVotes: [],
+                        upVotes: []
+                      });
 
-      template.glyphIcon.set('glyphicon-ok');
+        template.glyphIcon.set('glyphicon-ok');
+      }
     });
   }
 });
