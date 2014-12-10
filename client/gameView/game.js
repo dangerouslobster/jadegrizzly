@@ -24,6 +24,14 @@ Template.game.events({
     Router.go('/create');
   },
 
+  'click .contest-photos': function(evt, template) {
+    var value = evt.currentTarget.innerText;
+    // console.dir(evt.currentTarget.innerText);
+    Session.set('currentFeatName', value)
+    // console.log(Session.get('currentFeatName'))
+    Router.go('/contestPhotos');
+  },
+
   'click .logout': function(evt, template){
     console.log('Logging user out...');
     Meteor.logout(function(err) {
@@ -85,4 +93,6 @@ Template.gameEvent.events({
       }
     });
   }
+
+
 });
