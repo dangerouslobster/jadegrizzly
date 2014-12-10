@@ -1,6 +1,6 @@
 <template name="game">
   {{> dropdown}}
-  
+
   <h1 class="title">
     {{newGame.gameName}}
   </h1>
@@ -18,8 +18,16 @@
 </template>
 
 <template name='gameEvent'>
-    <a style="display: block" class="event-name">
-      {{name}}
-    <span class="check glyphicon {{checker}}"></span>
-    </a>
+  <div class="row">
+    <div class="col-xs-2">
+      <a class="contest-photos">
+        {{name}}
+      </a>
+    </div>
+    <div class="col-xs-2">
+      <a class="event-name">
+        <span class="glyphicon glyphicon-camera"></span>
+      </a>
+    </div>
+</div>
 </template>

@@ -37,6 +37,10 @@ Router.route('/profile', function(){
   this.render('profile');
 });
 
+Router.route('/contestPhotos', function(){
+  this.render('contestPhotos');
+});
+
 // default route for invalid URL
 Router.route(/\S+/i, function() {
   Router.go('/');
