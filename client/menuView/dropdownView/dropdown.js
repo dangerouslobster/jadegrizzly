@@ -8,7 +8,7 @@ Template.dropdown.events({
       createdBy: Meteor.userId(),
       participants: [Meteor.userId()]
     };
-    
+
     Games.insert(gameObj, function(err, id) {
       // update current game Session id
       Session.set('currentGameId', id);
@@ -23,5 +23,11 @@ Template.dropdown.events({
     Meteor.logout(function(err) {
       Router.go('/');
     });
+  },
+
+  'click .currentGame': function(evt, template) {
+    if(Session.get('currentGameId')) {
+      Router.go('/game');
+    };
   }
 });
