@@ -1,5 +1,5 @@
 /**
- * Search List Helpers 
+ * Search List Helpers
  */
 
 Template.search.helpers({
@@ -28,7 +28,7 @@ Template.search.events({
     // TODO check if the player is already a participant in this game, if they're not
     // then push their name into the participants array, similar to below
     // Meteor.call('playersUpsert', Meteor.userId(), {$push:{'gameList':id}});
-    
+
     Router.go('/game');
   }
 });
