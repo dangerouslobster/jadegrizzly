@@ -14,7 +14,6 @@ Template.create.events({
     evt.preventDefault();
 
     var value = template.find('.gameName').value;
-
     Meteor.call('gamesUpsert', Session.get('currentGameId'), {$set: {gameName: value}});
   },
 

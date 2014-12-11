@@ -96,5 +96,16 @@ Template.snapshots.events({
     Meteor.call('imagesUpsert', this._id, {$push: {'comments': {'comment': comment}}});
 
     input.value = '';
+  },
+  'submit form.new-title': function(evt, template){
+    evt.preventDefault();
+
+    var input = template.find('.addTitle');
+
+    var title = input.value;
+
+    Meteor.call('imagesUpsert', this._id, {$set: {'title': title}});
+
+    input.value = '';
   }
 });
