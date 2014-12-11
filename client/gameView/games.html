@@ -1,0 +1,23 @@
+<template name="allGames">
+  {{> dropdown}}
+
+  <h1 class="title">Games</h1>
+
+    <form class="gameSearch" autocomplete="off">
+      <input class="gameQuery" type="text">
+    </form>
+
+  <ul>
+    {{#each gameList}}
+      {{> oneGame}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="oneGame">
+  <li>
+    <a href="#" class="profile-game-name">
+      {{gameName}} by {{gameOwner}}
+    </a>
+  </li>
+</template>
