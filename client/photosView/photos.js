@@ -1,5 +1,5 @@
 /**
- * Photo View Helpers  
+ * Photo View Helpers
  */
 
 Template.photos.helpers({
@@ -45,10 +45,13 @@ var hasDownVoted = function(voterId, photoId) {
  * Helpers for each Photo
  */
 
+Template.snapshots.helpers({
+});
+
 Template.snapshots.events({
   'click div.upvote': function(evt, template) {
     var userId = Meteor.userId();
-    
+
     var upVoteCheck = hasUpVoted(userId, this._id);
     var downVoteCheck = hasDownVoted(userId, this._id);
     if (downVoteCheck) {
@@ -67,7 +70,7 @@ Template.snapshots.events({
 
   'click div.downvote': function(evt, template) {
     var userId = Meteor.userId();
-    
+
     var upVoteCheck = hasUpVoted(userId, this._id);
     var downVoteCheck = hasDownVoted(userId, this._id);
     if (upVoteCheck) {
@@ -81,5 +84,17 @@ Template.snapshots.events({
     } else {
       console.log('prevented upvote');
     }
+  },
+
+  'submit form.new-comment': function(evt, template){
+    evt.preventDefault();
+
+    var input = template.find('.addComment');
+
+    var comment = input.value;
+
+    Meteor.call('imagesUpsert', this._id, {$push: {'comments': {'comment': comment}}});
+
+    input.value = '';
   }
 });
