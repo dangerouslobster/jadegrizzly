@@ -26,6 +26,13 @@
 
 <template name="snapshots">
   <div class="block">
+    {{#if title}}
+      <div class="title">{{title}}</div>
+    {{else}}
+      <form class="new-title" autocomplete='off'>
+        <input type="text" name="add-title" placeholder="Add title" class="addTitle"/>
+      </form>
+    {{/if}}
     <div class="image-block">
       <img class="full-width" src="{{photoURL}}" alt="image">
     </div>
@@ -34,5 +41,13 @@
       <div class="downvote glyphicon glyphicon-minus"></div>
       <p class="vote-count">Votes: {{voteCount}}</p>
     </div>
+    <div class="comments">
+      {{#each comments}}
+        <div>{{comment}}</div>
+      {{/each}}
+    </div>
+    <form class="new-comment" autocomplete='off'>
+      <input type="text" name="add-comment" placeholder="Add comment" class="addComment"/>
+    </form>
   </div>
 </template>
