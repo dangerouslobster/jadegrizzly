@@ -23,7 +23,22 @@ Template.game.events({
   'click .go-back': function(evt, template){
     Router.go('/create');
   },
+  'submit form.new-event': function(evt, template) {
+    evt.preventDefault();
 
+    var input = template.find('.addEvents');
+    var featName = input.value.trim();
+    var featNameCheck = Games.findOne({_id:Session.get('currentGameId'), "featList.name":featName});
+    if (!featNameCheck) {
+      Meteor.call('gamesUpsert', Session.get('currentGameId'), {$push:{featList: {name: featName}}});
+      console.log('game event created');
+    } else {
+      // TODO add relevant message that feat already exists
+      console.log('game event already exists');
+    }
+
+    input.value = '';
+  },
   'click .contest-photos': function(evt, template) {
     var value = evt.currentTarget.innerText;
     // console.dir(evt.currentTarget.innerText);
