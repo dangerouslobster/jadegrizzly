@@ -6,6 +6,7 @@ Players = new Meteor.Collection('players');
 Games = new Meteor.Collection('games');
 Images = new Meteor.Collection('images');
 Messages = new Meteor.Collection('messages');
+Adverts = new Meteor.Collection('adverts');
 
 /**
  * Authenticate Client For DB Access
@@ -67,6 +68,20 @@ Messages.allow({
   }
 });
 
+Adverts.allow({
+  insert: function (userId, doc) {
+    // can only create docs where you are the author
+    return true;
+  },
+  remove: function (userId, doc) {
+    // can only delete your own docs
+    return true;
+  },
+  update: function(userId, doc) {
+    return true;
+  }
+});
+
 
 /**
  * Publish To Client
@@ -90,6 +105,10 @@ Meteor.publish('images', function() {
 
 Meteor.publish('messages', function() {
   return Messages.find({});
+});
+
+Meteor.publish('adverts', function() {
+  return Adverts.find({});
 });
 
 
@@ -125,6 +144,12 @@ Meteor.methods({
 
   usersUpsert: function(id, doc) {
     Meteor.users.upsert(id,doc);
+  },
+
+  advertsUpsert: function(id, doc) {
+    var result = Adverts.upsert({vendor: id},doc);
+    console.log(id, result )
+
   }
 });
 
