@@ -4,11 +4,19 @@
 
 Template.photos.helpers({
   photos: function() {
+    console.log(cursor);
     var cursor =  Images.find({gameId: Session.get('currentGameId')});//gameId: Session.get('currentGameId')
     return cursor;
   },
   gameName: function() {
     return Games.findOne(Session.get('currentGameId'));
+  }
+});
+
+Template.snapshots.helpers({
+  isOwner: function() {
+    console.log(Meteor.userId() === this.userId);
+    return Meteor.userId() === this.userId;
   }
 });
 
@@ -100,7 +108,6 @@ Template.snapshots.events({
 
   'submit form.new-title': function(evt, template){
     evt.preventDefault();
-
     var input = template.find('.addTitle');
 
     var title = input.value;
