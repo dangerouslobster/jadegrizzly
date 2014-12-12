@@ -47,7 +47,8 @@ Template.game.events({
   },
   'click .contest-photos': function(evt, template) {
     var value = evt.currentTarget.innerText;
-    Session.set('currentFeatName', value)
+    Session.set('profileViewUser', null);
+    Session.set('currentFeatName', value);
     Router.go('/contestPhotos');
   },
 

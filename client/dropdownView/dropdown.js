@@ -14,7 +14,8 @@ Template.dropdown.events({
       Session.set('currentGameId', id);
 
       // update player's game list with game they created
-      Meteor.call('playersUpsert', Meteor.userId(), {$push:{'gameList':id}});
+      Meteor.call('usersUpsert', Meteor.userId(), {$push:{'gameList':id}});
+      // Meteor.call('playersUpsert', Meteor.userId(), {$push:{'gameList':id}});
     });
   },
 
@@ -29,5 +30,9 @@ Template.dropdown.events({
     if(Session.get('currentGameId')) {
       Router.go('/game');
     };
+  },
+
+  'click .user-profile': function(evt, template) {
+    Session.set('profileViewUser', Meteor.userId());
   }
 });

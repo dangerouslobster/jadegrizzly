@@ -2,14 +2,14 @@
  * Setup Client Collections
  */
 
-Players = new Meteor.Collection('players');
+// Players = new Meteor.Collection('players');
 Games = new Meteor.Collection('games');
 Feats = new Meteor.Collection('feats');
 Images = new Meteor.Collection('images');
 Messages = new Meteor.Collection('messages');
 Adverts = new Meteor.Collection('adverts');
 
-Meteor.subscribe('players');
+// Meteor.subscribe('players');
 Meteor.subscribe('users');
 Meteor.subscribe('games');
 Meteor.subscribe('adverts');
@@ -51,4 +51,4 @@ Meteor.call('advertsUpsert', 'Cleaver.io', {
   photoURL: 'http://i.giphy.com/TlK63EuGI2K0craxhza.gif',
   title: 'Cleaver.io - Cut the Crepe',
   href: 'http://cleaver.io'
-})
+});

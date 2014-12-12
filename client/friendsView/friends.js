@@ -42,6 +42,10 @@ Template.friends.events({
       console.log('friend request sent');
     }
     input.value = '';
+  },
+
+  'click .username': function(evt, template) {
+    Session.set('profileViewUser', this._id);
   }
 });
 

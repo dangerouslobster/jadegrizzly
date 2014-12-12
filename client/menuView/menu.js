@@ -10,7 +10,12 @@ Template.menu.events({
       Session.set('currentGameId', id);
 
       // update player's game list with game they created
-      Meteor.call('playersUpsert', Meteor.userId(), {$push:{'gameList':id}});
+      Meteor.call('usersUpsert', Meteor.userId(), {$push:{'gameList':id}});
+      // Meteor.call('playersUpsert', Meteor.userId(), {$push:{'gameList':id}});
     });
+  },
+
+  'click .user-profile': function(evt, template) {
+    Session.set('profileViewUser', Meteor.userId());
   }
 });

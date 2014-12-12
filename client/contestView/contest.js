@@ -4,7 +4,11 @@
 
 Template.contestPhotos.helpers({
   photos: function() {
-    var cursor =  Images.find({gameId: Session.get('currentGameId')}).fetch();//gameId: Session.get('currentGameId')
+    if (Session.get('profileViewUser')) {
+      var cursor = Images.find({userId: Session.get('profileViewUser')}).fetch();
+    } else {
+      var cursor = Images.find({featName: Session.get('currentFeatName')}, {sort: {voteCount: -1}}).fetch();
+    }
     var ads = Adverts.find({}).fetch();
     var result = [];
     for(var i=0;i<cursor.length;i++){
@@ -14,14 +18,20 @@ Template.contestPhotos.helpers({
       };
 
     };
-    console.log(ads)
     return result;
   },
+
   gameName: function() {
     return Games.findOne(Session.get('currentGameId'));
   },
   featName: function() {
     return Session.get('currentFeatName');
+  }
+});
+
+Template.snapshots.helpers({
+  isOwner: function() {
+    return Meteor.userId() === this.userId;
   }
 });
 
@@ -106,7 +116,7 @@ Template.snapshots.events({
 
     var comment = input.value;
 
-    Meteor.call('imagesUpsert', this._id, {$push: {'comments': {'comment': comment, 'username': this.username}}});
+    Meteor.call('imagesUpsert', this._id, {$push: {'comments': {'comment': comment, 'username': Meteor.user().username}}});
 
     input.value = '';
   },
@@ -120,5 +130,10 @@ Template.snapshots.events({
     Meteor.call('imagesUpsert', this._id, {$set: {'title': title}});
 
     input.value = '';
+  },
+
+  'click .username': function(evt, template) {
+    var userId = Meteor.users.findOne({username: this.username})._id;
+    Session.set('profileViewUser', userId);
   }
 });
