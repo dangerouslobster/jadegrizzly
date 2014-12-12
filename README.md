@@ -59,7 +59,7 @@ Required packages are already installed. The full list can be found here:
 ```
 
 ### Database OverView
-We used 4 different Mongo Collections 
+We used 4 different Mongo Collections
 The 'players' collection is accessed by the Players variable
 The 'games' collection is accessed by the Games variable
 The 'images' collection is accessed by the Images variable
@@ -71,6 +71,7 @@ We didn't use mongoose to define schemas for the project (I don't even know if i
 var playerSchema = new Schema({
   _id:  String, /*assigned in code based off of the Meteor.userId(), for continuity*/
   gameList: [String, String, ...] /*mongoIds for games player is currently playing*/
+  friends: [String, String, ...] /*
 });
 
 var gameSchema = new Schema({

@@ -3,21 +3,5 @@
   <!-- <h1 class="title">Snapshot<br> Olympics</h1> -->
   <div class="login-screen">
     {{> loginButtons}}
-    {{#if currentUser}}
-      {{> userList}}
-    {{/if}}
   </div>
-</template>
-
-<template name="userList">
-  <h1> Users </h1>
-  <ul>
-    {{#each allUsers}}
-      {{> userItem}}
-    {{/each}}
-  </ul>
-</template>
-
-<template name="userItem">
-  <li>{{user}}</li>
 </template>

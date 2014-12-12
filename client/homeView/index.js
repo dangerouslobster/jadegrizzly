@@ -16,7 +16,7 @@ Tracker.autorun(function() {
  */
 
 Template.registerHelper('log', function(something) {
-  console.log(something);
+  // console.log(something);
 });
 
 /**
@@ -26,3 +26,4 @@ Template.registerHelper('log', function(something) {
 Accounts.ui.config({
   passwordSignupFields: 'USERNAME_ONLY'
 });
+

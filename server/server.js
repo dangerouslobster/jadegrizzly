@@ -7,7 +7,6 @@ Games = new Meteor.Collection('games');
 Images = new Meteor.Collection('images');
 Messages = new Meteor.Collection('messages');
 
-
 /**
  * Authenticate Client For DB Access
  */
@@ -94,6 +93,7 @@ Meteor.publish('messages', function() {
 });
 
 
+
 /**
  * Server Methods
  */
@@ -117,7 +117,19 @@ Meteor.methods({
 
   messagesInsert: function(doc) {
     Messages.insert(doc);
+  },
+
+  usersUpsert: function(id, doc) {
+    Meteor.users.upsert(id,doc);
   }
+});
 
 
+Accounts.onCreateUser(function(options, user) {
+  user.friends = [];
+  user.requests = [];
+  if (options.profile) {
+    user.profile = options.profile;
+  }
+  return user;
 });

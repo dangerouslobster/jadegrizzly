@@ -1,12 +1,14 @@
 <template name="profile">
   {{> dropdown}}
   <div class="user">
-    <div class="user-icon glyphicon glyphicon-user"></div>    
+    <div class="user-icon glyphicon glyphicon-user"></div>
   </div>
 
-  <h1 class="title">{{user.username}}'s<br> Games</h1>
+  <h1 class="title">{{user.username}}</h1>
+  <a href="friends">Friends</a>
+  <h2>Games</h2>
   <ul>
-    {{# each gameList}}
+    {{#each gameList}}
       {{> profileGames}}
     {{/each}}
   </ul>
