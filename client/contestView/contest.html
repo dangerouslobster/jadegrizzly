@@ -2,7 +2,9 @@
   {{> dropdown}}
 
   <h1 class="title feat-name">
-    {{featName}}
+    <b><u>
+      {{featName}}
+    </u></b>
   </h1>
 
   <div class="eventPhotos">
@@ -20,5 +22,42 @@
 <template name="contestPhoto">
   <div class="featPhoto">
       {{> snapshots}}
+  </div>
+</template>
+
+<template name="featPhoto">
+  <div class="feat-name title"><u>{{featName}}</u></div>
+  <div class="featPhoto">
+      {{> snapshots}}
+  </div>
+</template>
+
+<template name="snapshots">
+  <div class="block">
+    {{#if title}}
+      <div class="title">{{title}}</div>
+    {{else}}
+      {{#if isOwner}}
+        <form class="new-title" autocomplete='off'>
+          <input type="text" name="add-title" placeholder="Add title" class="addTitle"/>
+        </form>
+      {{/if}}
+    {{/if}}
+    <div class="image-block">
+      <img class="full-width" src="{{photoURL}}" alt="image">
+    </div>
+    <div class="vote-block">
+      <div class="upvote glyphicon glyphicon-plus"></div>
+      <div class="downvote glyphicon glyphicon-minus"></div>
+      <p class="vote-count">Votes: {{voteCount}}</p>
+    </div>
+    <div class="comments">
+      {{#each comments}}
+        <div>{{username}} | {{comment}}</div>
+      {{/each}}
+    </div>
+    <form class="new-comment" autocomplete='off'>
+      <input type="text" name="add-comment" placeholder="Add comment" class="addComment"/>
+    </form>
   </div>
 </template>
