@@ -6,10 +6,12 @@ Template.game.helpers({
   newGame: function() {
     return Games.findOne(Session.get('currentGameId'));
   },
-
   events: function() {
     var q = Games.findOne(Session.get('currentGameId'));
     return q.featList;
+  },
+  currentUserIs: function(userId) {
+    return userId === Meteor.user()._id;
   }
 });
 
@@ -22,6 +24,10 @@ Template.game.events({
   },
   'click .go-back': function(evt, template){
     Router.go('/create');
+  },
+  'click .delete': function(evt) {
+    Meteor.call("deleteGame", Session.get('currentGameId'));
+    Router.go('/games');
   },
   'submit form.new-event': function(evt, template) {
     evt.preventDefault();
