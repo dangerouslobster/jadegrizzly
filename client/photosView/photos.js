@@ -93,10 +93,11 @@ Template.snapshots.events({
 
     var comment = input.value;
 
-    Meteor.call('imagesUpsert', this._id, {$push: {'comments': {'comment': comment}}});
+    Meteor.call('imagesUpsert', this._id, {$push: {'comments': {'comment': comment, 'username': this.username}}});
 
     input.value = '';
   },
+
   'submit form.new-title': function(evt, template){
     evt.preventDefault();
 
