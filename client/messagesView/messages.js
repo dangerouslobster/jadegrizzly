@@ -4,7 +4,7 @@
 
 Template.messages.helpers({
   messages: function() {
-    return Messages.find().fetch();
+    return Messages.find({}).fetch().reverse();
   }
 });
 
