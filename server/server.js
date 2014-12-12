@@ -103,6 +103,10 @@ Meteor.methods({
     Players.upsert(id, doc);
   },
 
+  deleteGame: function(gameId) {
+    Games.remove(gameId);
+  },
+
   gamesUpsert: function(id, doc) {
     Games.upsert(id, doc);
   },

@@ -28,6 +28,7 @@ Template.oneGame.events({
   'click .profile-game-name': function (evt) {
     evt.preventDefault();
     Session.set('currentGameId', this._id);
+    Session.set('game-query', '');
     Router.go('/game');
   }
 })

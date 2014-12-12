@@ -3,6 +3,9 @@
 
   <h1 class="title">
     {{newGame.gameName}}
+    {{#if currentUserIs newGame.createdBy}}
+      <button class="delete">&times;</button>
+    {{/if}}
   </h1>
 
   <ul>
