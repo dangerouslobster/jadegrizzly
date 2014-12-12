@@ -4,10 +4,13 @@
 
 Template.profile.helpers({
   user: function() {
-    return Meteor.user();
+    var userId = Session.get('profileViewUser');
+    return Meteor.users.findOne({_id: userId});
+    // return Meteor.user();
   },
   gameList: function() {
-    return Games.find({"createdBy": Meteor.userId()});
+    var userId = Session.get('profileViewUser');
+    return Games.find({"createdBy": userId});
   }
 });
 

@@ -30,5 +30,9 @@ Template.dropdown.events({
     if(Session.get('currentGameId')) {
       Router.go('/game');
     };
+  },
+
+  'click .user-profile': function(evt, template) {
+    Session.set('profileViewUser', Meteor.userId());
   }
 });

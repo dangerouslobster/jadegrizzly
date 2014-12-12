@@ -25,6 +25,12 @@ Template.contestPhotos.helpers({
   }
 });
 
+Template.snapshots.helpers({
+  isOwner: function() {
+    return Meteor.userId() === this.userId;
+  }
+});
+
 Template.contestPhotos.events({
   'click .navigate-events': function(evt, template) {
     Router.go('/game');
@@ -106,7 +112,7 @@ Template.snapshots.events({
 
     var comment = input.value;
 
-    Meteor.call('imagesUpsert', this._id, {$push: {'comments': {'comment': comment, 'username': this.username}}});
+    Meteor.call('imagesUpsert', this._id, {$push: {'comments': {'comment': comment, 'username': Meteor.user().username}}});
 
     input.value = '';
   },
@@ -120,5 +126,10 @@ Template.snapshots.events({
     Meteor.call('imagesUpsert', this._id, {$set: {'title': title}});
 
     input.value = '';
+  },
+
+  'click .username': function(evt, template) {
+    var userId = Meteor.users.findOne({username: this.username})._id;
+    Session.set('profileViewUser', userId);
   }
 });

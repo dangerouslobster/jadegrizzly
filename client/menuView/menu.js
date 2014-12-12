@@ -13,5 +13,9 @@ Template.menu.events({
       Meteor.call('usersUpsert', Meteor.userId(), {$push:{'gameList':id}});
       // Meteor.call('playersUpsert', Meteor.userId(), {$push:{'gameList':id}});
     });
+  },
+
+  'click .user-profile': function(evt, template) {
+    Session.set('profileViewUser', Meteor.userId());
   }
 });
