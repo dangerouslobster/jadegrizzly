@@ -44,4 +44,11 @@ Meteor.call('advertsUpsert', 'Heinz', {
   photoURL: 'http://www.heinz.com/media/downloads/view/HeinzLogo.jpg',
   title: 'Heinz - 57 Varieties',
   href: 'http://heinz.com'
+});
+
+Meteor.call('advertsUpsert', 'Cleaver.io', {
+  vendor: 'Cleaver.io',
+  photoURL: 'http://i.giphy.com/TlK63EuGI2K0craxhza.gif',
+  title: 'Cleaver.io - Cut the Crepe',
+  href: 'http://cleaver.io'
 })
