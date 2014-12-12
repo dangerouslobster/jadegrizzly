@@ -37,18 +37,6 @@ Template.photos.events({
   }
 });
 
-var hasUpVoted = function(voterId, photoId) {
-  var query = {'_id':photoId, 'upVotes': { $in: [ voterId ] } };
-  var voteCheck = Images.findOne(query);
-  return (voteCheck !== undefined);
-};
-
-var hasDownVoted = function(voterId, photoId) {
-  var query = {'_id':photoId, 'downVotes': { $in: [ voterId ] } };
-  var voteCheck = Images.findOne(query);
-  return (voteCheck !== undefined);
-};
-
 /**
  * Helpers for each Photo
  */

@@ -15,7 +15,7 @@ Template.game.helpers({
 
 Template.game.events({
   'click .navigate-photos': function(evt, template){
-    Router.go('/photos');
+    Router.go('/topPhotos');
   },
   'click .navigate-events': function(evt, template){
     Router.go('/game');
@@ -41,9 +41,7 @@ Template.game.events({
   },
   'click .contest-photos': function(evt, template) {
     var value = evt.currentTarget.innerText;
-    // console.dir(evt.currentTarget.innerText);
     Session.set('currentFeatName', value)
-    // console.log(Session.get('currentFeatName'))
     Router.go('/contestPhotos');
   },
 
@@ -101,7 +99,8 @@ Template.gameEvent.events({
                         "photoURL":data, // I don't know why photoURL is in quotes. I don't even know why it's called photoURL
                         voteCount: 0,
                         downVotes: [],
-                        upVotes: []
+                        upVotes: [],
+                        topVoted: false
                       });
 
         template.glyphIcon.set('glyphicon-ok');

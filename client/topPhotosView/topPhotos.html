@@ -1,24 +1,18 @@
-<template name="contestPhotos">
+<template name="topPhotos">
   {{> dropdown}}
 
-  <h1 class="title feat-name">
-    {{featName}}
+  <h1 class="title">
+    {{gameName.gameName}}
   </h1>
 
   <div class="eventPhotos">
     {{#each photos}}
-        {{> contestPhoto}}
+      {{> featPhoto}}
     {{/each}}
   </div>
 
   <div class="footer">
     <button class="navigate-photos">Top Photos</button>
     <button class="navigate-events">Events</button>
-  </div>
-</template>
-
-<template name="contestPhoto">
-  <div class="featPhoto">
-      {{> snapshots}}
   </div>
 </template>
