@@ -17,7 +17,6 @@ Template.game.helpers({
 
 Template.game.events({
   'click .navigate-photos': function(evt, template){
-    Session.set('profileViewUser', null);
     Router.go('/topPhotos');
   },
   'click .navigate-events': function(evt, template){
@@ -48,6 +47,7 @@ Template.game.events({
   },
   'click .contest-photos': function(evt, template) {
     var value = evt.currentTarget.innerText;
+    Session.set('profileViewUser', null);
     Session.set('currentFeatName', value);
     Router.go('/contestPhotos');
   },
