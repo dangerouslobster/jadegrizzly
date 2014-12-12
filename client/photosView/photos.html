@@ -29,9 +29,11 @@
     {{#if title}}
       <div class="title">{{title}}</div>
     {{else}}
-      <form class="new-title" autocomplete='off'>
-        <input type="text" name="add-title" placeholder="Add title" class="addTitle"/>
-      </form>
+      {{#if isOwner}}
+        <form class="new-title" autocomplete='off'>
+          <input type="text" name="add-title" placeholder="Add title" class="addTitle"/>
+        </form>
+      {{/if}}
     {{/if}}
     <div class="image-block">
       <img class="full-width" src="{{photoURL}}" alt="image">
