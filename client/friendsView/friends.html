@@ -1,0 +1,41 @@
+<template name="friends">
+  {{> dropdown}}
+  <h1 class="title">Friends</h1>
+  <h2 class="">Add Friend</h2>
+
+  <form class="new-friend" autocomplete='off'>
+    <input type="text" name="name-friend" placeholder="find a friend" class="friendName">
+  </form>
+  {{#if requests}}
+    <h2 class="">Friend Requests</h2>
+    {{#each requests}}
+      {{> request}}
+    {{/each}}
+  {{/if}}
+
+  <h2 class="">Friends</h2>
+  {{#each friends}}
+    {{> friend}}
+  {{/each}}
+
+  <div class="footer">
+    <button class="add-friend">Add</button>
+  </div>
+</template>
+
+<template name="request">
+    <li class="inline-event">
+      {{this.username}}
+      <div class="add glyphicon glyphicon-ok"></div>
+      <div class="remove glyphicon glyphicon-remove"></div>
+    </li>
+</template>
+
+<template name="friend">
+    <li class="inline-event">
+      {{this.username}}
+    </li>
+</template>
+
+
+
