@@ -94,12 +94,16 @@ Template.snapshots.events({
     var downVoteCheck = hasDownVoted(userId, this._id);
     if (downVoteCheck) {
       Meteor.call('imagesUpsert', this._id, {$inc: {'voteCount': 1}});
-      Meteor.call('imagesUpsert', this._id, {$pull: {'downVotes': userId}});
+      Meteor.call('imagesUpsert', this._id, {$pull: {'downVotes': userId}}, function() {
+        setTopVote();
+      });
       console.log('removed downvote');
     } else if (!upVoteCheck) {
       console.log('upVoted');
       Meteor.call('imagesUpsert', this._id, {$inc: {'voteCount': 1}});
-      Meteor.call('imagesUpsert', this._id, {$push: {'upVotes': userId}});
+      Meteor.call('imagesUpsert', this._id, {$push: {'upVotes': userId}}, function() {
+        setTopVote();
+      });
     }
     else {
       console.log('prevented upvote');
@@ -113,12 +117,16 @@ Template.snapshots.events({
     var downVoteCheck = hasDownVoted(userId, this._id);
     if (upVoteCheck) {
       Meteor.call('imagesUpsert', this._id, {$inc: {'voteCount': -1}});
-      Meteor.call('imagesUpsert', this._id, {$pull: {'upVotes': userId}});
+      Meteor.call('imagesUpsert', this._id, {$pull: {'upVotes': userId}}, function() {
+        setTopVote();
+      });
       console.log('removed downvote');
     } else if (!downVoteCheck) {
       console.log('downvoted');
       Meteor.call('imagesUpsert', this._id, {$inc: {'voteCount': -1}});
-      Meteor.call('imagesUpsert', this._id, {$push: {'downVotes': userId}});
+      Meteor.call('imagesUpsert', this._id, {$push: {'downVotes': userId}}, function() {
+        setTopVote();
+      });
     } else {
       console.log('prevented upvote');
     }
