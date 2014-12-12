@@ -11,7 +11,7 @@ Template.game.helpers({
     return q.featList;
   },
   currentUserIs: function(userId) {
-    return userId === Meteor.user()._id;
+    return userId === Meteor.userId();
   }
 });
 
