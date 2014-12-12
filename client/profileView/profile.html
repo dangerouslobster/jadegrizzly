@@ -17,10 +17,11 @@
 </template>
 
 <template name="profileGames">
-  {{log gameName}}
-  {{#if stringNotEmpty gameName}}
+  {{#if gameName}}
     <li><a href="#" class="profile-game-name">
       {{gameName}}
     </a></li>
+    {{#if hasGames}}
+    {{/if}}
   {{/if}}
 </template>
