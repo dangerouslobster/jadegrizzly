@@ -2,7 +2,7 @@
 /**
  * Create Collections
  */
-Players = new Meteor.Collection('players');
+// Players = new Meteor.Collection('players');
 Games = new Meteor.Collection('games');
 Images = new Meteor.Collection('images');
 Messages = new Meteor.Collection('messages');
@@ -26,19 +26,19 @@ Images.allow({
 });
 
 
-Players.allow({
-  insert: function (userId, doc) {
-    // can only create docs where you are the author
-    return true;
-  },
-  remove: function (userId, doc) {
-    // can only delete your own docs
-    return true;
-  },
-  update: function(userId, doc) {
-    return true;
-  }
-});
+// Players.allow({
+//   insert: function (userId, doc) {
+//     // can only create docs where you are the author
+//     return true;
+//   },
+//   remove: function (userId, doc) {
+//     // can only delete your own docs
+//     return true;
+//   },
+//   update: function(userId, doc) {
+//     return true;
+//   }
+// });
 
 Games.allow({
   insert: function (userId, doc) {
@@ -87,9 +87,9 @@ Adverts.allow({
  * Publish To Client
  */
 
-Meteor.publish('players', function() {
-  return Players.find();
-});
+// Meteor.publish('players', function() {
+//   return Players.find();
+// });
 
 Meteor.publish('users', function() {
   return Meteor.users.find();
@@ -118,9 +118,9 @@ Meteor.publish('adverts', function() {
  */
 
 Meteor.methods({
-  playersUpsert: function(id, doc) {
-    Players.upsert(id, doc);
-  },
+  // playersUpsert: function(id, doc) {
+  //   Players.upsert(id, doc);
+  // },
 
   deleteGame: function(gameId) {
     Games.remove(gameId);
@@ -157,6 +157,7 @@ Meteor.methods({
 Accounts.onCreateUser(function(options, user) {
   user.friends = [];
   user.requests = [];
+  user.gameList = [];
   if (options.profile) {
     user.profile = options.profile;
   }
