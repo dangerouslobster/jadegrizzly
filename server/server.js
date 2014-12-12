@@ -5,6 +5,7 @@
 Players = new Meteor.Collection('players');
 Games = new Meteor.Collection('games');
 Images = new Meteor.Collection('images');
+Messages = new Meteor.Collection('messages');
 
 
 /**
@@ -53,6 +54,20 @@ Games.allow({
   }
 });
 
+Messages.allow({
+  insert: function (userId, doc) {
+    // can only create docs where you are the author
+    return true;
+  },
+  remove: function (userId, doc) {
+    // can only delete your own docs
+    return true;
+  },
+  update: function(userId, doc) {
+    return true;
+  }
+});
+
 
 /**
  * Publish To Client
@@ -72,6 +87,10 @@ Meteor.publish('games', function() {
 
 Meteor.publish('images', function() {
   return Images.find({});
+});
+
+Meteor.publish('messages', function() {
+  return Messages.find({});
 });
 
 
@@ -94,6 +113,10 @@ Meteor.methods({
 
   imagesUpsert: function(id, doc) {
     Images.upsert(id, doc);
+  },
+
+  messagesInsert: function(doc) {
+    Messages.insert(doc);
   }
 
 
