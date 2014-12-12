@@ -5,9 +5,9 @@
 Template.contestPhotos.helpers({
   photos: function() {
     if (Session.get('profileViewUser')) {
-      var cursor = Images.find({userId: Session.get('profileViewUser')});
+      var cursor = Images.find({userId: Session.get('profileViewUser')}).fetch();
     } else {
-      var cursor = Images.find({featName: Session.get('currentFeatName')}, {sort: {voteCount: -1}});
+      var cursor = Images.find({featName: Session.get('currentFeatName')}, {sort: {voteCount: -1}}).fetch();
     }
     var ads = Adverts.find({}).fetch();
     var result = [];
