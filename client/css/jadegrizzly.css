@@ -106,7 +106,7 @@
 
 /* GLOBAL STYLES */
 html, body {
-  background-color: #2ae8db;
+  background-color: #B30511;
   color: white;
   display: block;
   font-family: Lato, Helvetica, Arial, sans-serif;
@@ -149,7 +149,7 @@ html, body {
 }
 
 #dropdown-menu:hover {
-  color: steelblue;
+  color: #b292f7;
   cursor: pointer;
 }
 
@@ -162,7 +162,7 @@ input {
   background: none;
   border: none;
   border-bottom: 1px solid white;
-  color: steelblue;
+  color: #b292f7;
   margin-left: 10px;
   margin-bottom: 15px;
   padding-bottom: 5px;
@@ -185,7 +185,7 @@ input:focus {
 
 /* LINKS */
 a {
-  color: steelblue;
+  color: #B292F7;
   cursor: pointer;
 }
 
@@ -220,7 +220,7 @@ a {
 }
 
 .remove:hover {
-  color: steelblue;
+  color: #b292f7;
 }
 
 .check {
@@ -233,7 +233,7 @@ a {
   bottom: 0;
   position: fixed;
   width: 100%;
-  background-color: #2ae8db;
+  background-color: #b51701;
   padding-top: 5px;
 }
 
@@ -248,8 +248,8 @@ button {
 }
 
 button:hover {
-  border: 2px solid steelblue;
-  color: steelblue;
+  border: 2px solid #b292f7;
+  color: #b292f7;
 }
 
 button:focus {
@@ -341,7 +341,7 @@ em {
 .upvote:hover,
 .downvote:hover {
   cursor: pointer;
-  color: steelblue;
+  color: #b292f7;
 }
 
 .vote-block {
