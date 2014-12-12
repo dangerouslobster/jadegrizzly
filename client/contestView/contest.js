@@ -4,7 +4,11 @@
 
 Template.contestPhotos.helpers({
   photos: function() {
-    var cursor =  Images.find({gameId: Session.get('currentGameId')}).fetch();//gameId: Session.get('currentGameId')
+    if (Session.get('profileViewUser')) {
+      var cursor = Images.find({userId: Session.get('profileViewUser')});
+    } else {
+      var cursor = Images.find({featName: Session.get('currentFeatName')}, {sort: {voteCount: -1}});
+    }
     var ads = Adverts.find({}).fetch();
     var result = [];
     for(var i=0;i<cursor.length;i++){
@@ -14,9 +18,9 @@ Template.contestPhotos.helpers({
       };
 
     };
-    console.log(ads)
     return result;
   },
+
   gameName: function() {
     return Games.findOne(Session.get('currentGameId'));
   },
