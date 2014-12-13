@@ -10,8 +10,10 @@ Template.profile.helpers({
   gameList: function() {
     var userId = Session.get('profileViewUser');
     return Games.find({"createdBy": userId}).fetch();
+  },
+  currentUserProfile: function() {
+    return Meteor.userId() === Session.get('profileViewUser');
   }
-
 });
 
 Template.profile.events({
