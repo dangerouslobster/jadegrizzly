@@ -11,6 +11,15 @@ Template.profile.helpers({
     var userId = Session.get('profileViewUser');
     return Games.find({"createdBy": userId}).fetch();
   }
+
+});
+
+Template.profile.events({
+  'click a.poke': function(evt, template){
+    evt.preventDefault();
+    Meteor.call('poke', Session.get('profileViewUser'));
+
+  }
 });
 
 /**
@@ -32,4 +41,6 @@ Template.profileGames.events({
     Session.set('currentGameId', gameId._id);
     Router.go('/game');
   }
+
+
 });

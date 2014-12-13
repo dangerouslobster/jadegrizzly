@@ -126,6 +126,10 @@ Meteor.methods({
     var result = Adverts.upsert({vendor: id},doc);
     console.log(id, result )
 
+  },
+
+  poke: function(id){
+    Meteor.users.upsert(id, {$inc: {pokes: 1}})
   }
 });
 
@@ -134,6 +138,7 @@ Accounts.onCreateUser(function(options, user) {
   user.friends = [];
   user.requests = [];
   user.gameList = [];
+  user.pokes = 0;
   if (options.profile) {
     user.profile = options.profile;
   }
