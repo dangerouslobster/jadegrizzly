@@ -256,7 +256,7 @@ button:focus {
   outline: none;
 }
 
-button.delete {
+button.delete, button.endgame {
   font-size: 24px;
   height: 40px;
   width: 40px;

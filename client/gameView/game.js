@@ -29,6 +29,9 @@ Template.game.events({
     Meteor.call("deleteGame", Session.get('currentGameId'));
     Router.go('/games');
   },
+  'click .endgame': function(evt) {
+    Meteor.call('gamesUpsert', Session.get('currentGameId'), {$set:{closed: true}});
+  },
   'submit form.new-event': function(evt, template) {
     evt.preventDefault();
 
