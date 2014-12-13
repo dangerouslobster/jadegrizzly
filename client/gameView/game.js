@@ -8,6 +8,7 @@ Template.game.helpers({
   },
   events: function() {
     var q = Games.findOne(Session.get('currentGameId'));
+    console.log(q.featList);
     return q.featList;
   },
   currentUserIs: function(userId) {
