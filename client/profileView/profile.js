@@ -13,6 +13,10 @@ Template.profile.helpers({
   },
   currentUserProfile: function() {
     return Meteor.userId() === Session.get('profileViewUser');
+  },
+  friendGameList: function() {
+    var cursor = Meteor.users.find({'_id': Meteor.userId()});
+    return Games.find({'_id': {$in :cursor.fetch()[0].friendGameList}});
   }
 });
 
@@ -20,8 +24,7 @@ Template.profile.events({
   'click a.poke': function(evt, template){
     evt.preventDefault();
     Meteor.call('poke', Session.get('profileViewUser'));
-
-  }
+  },
 });
 
 /**
@@ -30,7 +33,6 @@ Template.profile.events({
 
 Template.profileGames.helpers({
   hasGames: function() {
-    console.log(this);
   }
 
 });
@@ -43,6 +45,4 @@ Template.profileGames.events({
     Session.set('currentGameId', gameId._id);
     Router.go('/game');
   }
-
-
 });
