@@ -124,8 +124,6 @@ Meteor.methods({
 
   advertsUpsert: function(id, doc) {
     var result = Adverts.upsert({vendor: id},doc);
-    console.log(id, result )
-
   },
 
   poke: function(id){

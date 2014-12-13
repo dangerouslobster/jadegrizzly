@@ -9,7 +9,9 @@
   <h2>{{user.pokes}} pokes</h2>
 
   <h2><a href="/contestPhotos">Photos</a></h2>
-  <h2><a href="/friends">Friends</a></h2>
+  {{#if currentUserProfile}}
+    <h2><a href="/friends">Friends</a></h2>
+  {{/if}}
   <h2>Games</h2>
   <ul>
     {{#each gameList}}
