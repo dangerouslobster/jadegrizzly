@@ -46,7 +46,7 @@ Template.game.events({
 
   'click .add': function(evt) {
     Meteor.call('gamesUpsert', Session.get('currentGameId'), {$push:{'participants': Meteor.userId()}});
-    Meteor.call('playersUpsert', Meteor.userId(), {$push:{'friendGameList': Session.get('currentGameId')}});
+    Meteor.call('usersUpsert', Meteor.userId(), {$push:{'friendGameList': Session.get('currentGameId')}});
     Router.go('/game');
   },
   'submit form.new-event': function(evt, template) {
