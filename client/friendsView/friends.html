@@ -1,11 +1,6 @@
 <template name="friends">
   {{> dropdown}}
   <h1 class="title">Friends</h1>
-  <h2 class="">Add Friend</h2>
-
-  <form class="new-friend" autocomplete='off'>
-    <input type="text" name="name-friend" placeholder="find a friend" class="friendName">
-  </form>
   {{#if requests}}
     <h2 class="">Friend Requests</h2>
     {{#each requests}}
@@ -18,14 +13,15 @@
     {{> friend}}
   {{/each}}
 
-  <div class="footer">
-    <button class="add-friend">Add</button>
-  </div>
+  <h2 class="">Other Users</h2>
+  {{#each users}}
+    {{> user}}
+  {{/each}}
 </template>
 
 <template name="request">
     <li class="inline-event">
-      {{this.username}}
+      {{username}}
       <div class="add glyphicon glyphicon-ok"></div>
       <div class="remove glyphicon glyphicon-remove"></div>
     </li>
@@ -33,7 +29,14 @@
 
 <template name="friend">
     <li class="inline-event">
-      <a class="username" href="/profile">{{this.username}}</a>
+      <a class="username" href="/profile">{{username}}</a>
+    </li>
+</template>
+
+<template name="user">
+    <li class="inline-event">
+      <a class="username" href="/profile">{{username}}</a>
+      <div class="request glyphicon glyphicon-plus"></div>
     </li>
 </template>
 
