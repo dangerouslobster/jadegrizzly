@@ -12,9 +12,15 @@
   {{#if currentUserProfile}}
     <h2><a href="/friends">Friends</a></h2>
   {{/if}}
-  <h2>Games</h2>
+  <h2>Games by You</h2>
   <ul>
     {{#each gameList}}
+      {{> profileGames}}
+    {{/each}}
+  </ul>
+  <h2>Games You Follow</h2>
+  <ul>
+    {{#each friendGameList}}
       {{> profileGames}}
     {{/each}}
   </ul>

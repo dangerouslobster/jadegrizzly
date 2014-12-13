@@ -13,6 +13,15 @@ Template.game.helpers({
   },
   currentUserIs: function(userId) {
     return userId === Meteor.userId();
+  },
+  userIsParticipant: function() {
+    game = Games.findOne(Session.get('currentGameId'));
+    for (var i = 0; i < game.participants.length; i++) {
+      if (game.participants[i] === Meteor.userId()) {
+        return true;
+      }
+    }
+    return false;
   }
 });
 
@@ -30,8 +39,15 @@ Template.game.events({
     Meteor.call("deleteGame", Session.get('currentGameId'));
     Router.go('/games');
   },
+
   'click .endgame': function(evt) {
     Meteor.call('gamesUpsert', Session.get('currentGameId'), {$set:{closed: true}});
+  },
+
+  'click .add': function(evt) {
+    Meteor.call('gamesUpsert', Session.get('currentGameId'), {$push:{'participants': Meteor.userId()}});
+    Meteor.call('playersUpsert', Meteor.userId(), {$push:{'friendGameList': Session.get('currentGameId')}});
+    Router.go('/game');
   },
   'submit form.new-event': function(evt, template) {
     evt.preventDefault();

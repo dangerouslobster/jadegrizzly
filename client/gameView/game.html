@@ -9,6 +9,9 @@
       {{/unless}}
       <button class="delete">&times;</button>
     {{/if}}
+    {{#unless userIsParticipant}}
+      <button class="add">&plus;</button>
+    {{/unless}}
   </h1>
 
   <ul>

@@ -4,7 +4,7 @@
   <h1 class="title">Games</h1>
 
     <form class="gameSearch" autocomplete="off">
-      <input class="gameQuery" placeholder="search" type="text">
+      <input class="gameQuery" type="text">
     </form>
 
   <ul>
@@ -15,15 +15,9 @@
 </template>
 
 <template name="oneGame">
-  <div class="row">
-    <a class = "glyphicon glyphicon-plus">
-
-    </a>
-    <a class = "glyphicon glyphicon-minus">
-
-    </a>
+  <li>
     <a href="#" class="profile-game-name">
       {{gameName}} by {{gameOwner}}
     </a>
-  </div>
+  </li>
 </template>

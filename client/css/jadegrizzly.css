@@ -265,6 +265,15 @@ button.delete, button.endgame {
   top: -10px;
 }
 
+button.add {
+  font-size: 24px;
+  height: 40px;
+  width: 40px;
+  height: inherit;
+  position: relative;
+  top: -10px;
+}
+
 /* SEARCH AUTOCOMPLETE */
 .-autocomplete-container {
   background: none;
