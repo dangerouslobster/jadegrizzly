@@ -29,12 +29,6 @@ Template.contestPhotos.helpers({
   }
 });
 
-Template.snapshots.helpers({
-  isOwner: function() {
-    return Meteor.userId() === this.userId;
-  }
-});
-
 Template.contestPhotos.events({
   'click .navigate-events': function(evt, template) {
     Router.go('/game');
@@ -58,7 +52,6 @@ Template.contestPhotos.events({
 
 Template.snapshots.helpers({
   isOwner: function() {
-    console.log(Meteor.userId() === this.userId);
     return Meteor.userId() === this.userId;
   }
 });
