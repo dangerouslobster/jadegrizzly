@@ -33,7 +33,6 @@ Template.profile.events({
 
 Template.profileGames.helpers({
   hasGames: function() {
-    // console.log(this);
   }
 
 });
