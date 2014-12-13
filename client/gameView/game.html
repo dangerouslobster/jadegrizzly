@@ -4,6 +4,9 @@
   <h1 class="title">
     {{newGame.gameName}}
     {{#if currentUserIs newGame.createdBy}}
+      {{#unless newGame.closed}}
+      <button class="endgame">&cent;</button>
+      {{/unless}}
       <button class="delete">&times;</button>
     {{/if}}
   </h1>
@@ -13,9 +16,11 @@
       {{> gameEvent}}
     {{/each}}
   </ul>
-  <form class="new-event" autocomplete='off'>
-    <input type="text" name="add-events" placeholder="Add events" class="addEvents"/>
-  </form>
+  {{#unless newGame.closed}}
+    <form class="new-event" autocomplete='off'>
+      <input type="text" name="add-events" placeholder="Add events" class="addEvents"/>
+    </form>
+  {{/unless}}
   <div class="footer">
     <button class="navigate-photos">Top Photos</button>
     <button class="navigate-events">Events</button>
