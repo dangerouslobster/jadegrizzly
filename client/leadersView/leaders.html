@@ -1,0 +1,9 @@
+<template name="leaders">
+  {{> dropdown}}
+  <h1>Pokes Leaderboard</h1>
+  {{#each users}}
+    <div>
+      {{username}} {{pokes}}
+    </div>
+  {{/each}}
+</template>
